@@ -22,6 +22,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.android.camera2.R;
 
@@ -38,6 +40,7 @@ public class CameraControls extends RotatableLayout {
     private View mSceneDetect;
     private View mBurstMode;
     private View mSpinner;
+    private View mAlbumSelector;
 
     private final boolean mHasTranslucentNavigationBar =
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
@@ -73,6 +76,12 @@ public class CameraControls extends RotatableLayout {
         mSceneDetect = findViewById(R.id.scene_detect_icon);
         mBurstMode = findViewById(R.id.burst_mode_icon);
         mSpinner = findViewById(R.id.wait_spinner);
+	mAlbumSelector = findViewById(R.id.album_selector);
+	((ImageButton) mAlbumSelector).setOnClickListener(new View.OnClickListener() {
+		public void onClick(View v) {
+			Toast.makeText(getContext(), "It is of workings!", Toast.LENGTH_LONG).show();
+		}
+	});
     }
 
     @Override
@@ -97,6 +106,8 @@ public class CameraControls extends RotatableLayout {
         }
         Rect shutter = new Rect();
         topRight(mPreview, l, t, r, b);
+	bottomRight(mAlbumSelector, l, t, r, b);
+
         if (size > 0) {
             // restrict controls to size
             switch (rotation) {
@@ -301,6 +312,13 @@ public class CameraControls extends RotatableLayout {
         v.layout(l + ml, t + mt, l + v.getMeasuredWidth() + ml, t + mt + v.getMeasuredHeight());
     }
 
+    private void bottomRight(View v, int l, int t, int r, int b) {
+        // layout using the specific margins; the rotation code messes up the others
+        int mb = getContext().getResources().getDimensionPixelSize(R.dimen.capture_margin_top);
+        int mr = getContext().getResources().getDimensionPixelSize(R.dimen.capture_margin_right);
+        v.layout(r - v.getMeasuredWidth() - mr, b - v.getMeasuredHeight() - mb, r - mr, b - mb);
+    }
+
     private void adjustBackground() {
         int rotation = getUnifiedRotation();
         // remove current drawable and reset rotation
@@ -321,5 +339,4 @@ public class CameraControls extends RotatableLayout {
         }
         mBackgroundView.setBackgroundResource(R.drawable.switcher_bg);
     }
-
 }
