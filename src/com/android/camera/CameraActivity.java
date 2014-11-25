@@ -164,6 +164,7 @@ public class CameraActivity extends Activity
     private Intent mResultDataForTesting;
     private OnScreenHint mStorageHint;
     private String mStoragePath;
+    private String mAlbumName;
     private long mStorageSpaceBytes = Storage.LOW_STORAGE_THRESHOLD_BYTES;
     private boolean mAutoRotateScreen;
     private boolean mSecureCamera;
@@ -1362,12 +1363,16 @@ public class CameraActivity extends Activity
     protected boolean setStoragePath(SharedPreferences prefs) {
         String storagePath = prefs.getString(CameraSettings.KEY_STORAGE,
                 Environment.getExternalStorageDirectory().toString());
+        String albumName = prefs.getString(CameraSettings.KEY_CURRENT_ALBUM, "Camera");
+        Log.v(TAG, "album name for storage path is: " + albumName);
         Storage.getInstance().setRoot(storagePath);
+        Storage.getInstance().setAlbumName(albumName);
 
-        if (storagePath.equals(mStoragePath)) {
+        if (storagePath.equals(mStoragePath) && albumName.equals(mAlbumName)) {
             return false;
         }
         mStoragePath = storagePath;
+        mAlbumName = albumName;
 
         // Sync the swipe preview with the right path
         if (mDataAdapter != null) {

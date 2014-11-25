@@ -56,6 +56,7 @@ public class Storage {
     }
 
     private String mRoot = Environment.getExternalStorageDirectory().toString();
+    private String mAlbumName = "";
     private static Storage sStorage;
 
     private Storage() { }
@@ -69,6 +70,14 @@ public class Storage {
 
     public void setRoot(String root) {
         mRoot = root;
+    }
+
+    public void setAlbumName(String name) {
+        if("Camera".equals(name)) {
+            mAlbumName = "";
+        } else {
+            mAlbumName = name;
+        }
     }
 
     public int writeFile(String path, byte[] jpeg, ExifInterface exif,
@@ -110,9 +119,6 @@ public class Storage {
     public Uri addImage(ContentResolver resolver, String title, long date,
             Location location, int orientation, ExifInterface exif, byte[] jpeg, int width,
             int height, String mimeType) {
-
-        int newIndex = dirIndex.incrementAndGet();
-        Log.v(TAG, "Incremented dirIndex to " + newIndex);
 
         String path = generateFilepath(title, mimeType);
         int size = writeFile(path, jpeg, exif, mimeType);
@@ -220,11 +226,8 @@ public class Storage {
         return new File(mRoot, Environment.DIRECTORY_DCIM).toString();
     }
 
-    private static final java.util.concurrent.atomic.AtomicInteger dirIndex = new java.util.concurrent.atomic.AtomicInteger();
     public String generateDirectory() {
-        int index = dirIndex.get();
-        Log.v(TAG, "Generate dir: " + index);
-        String path = generateDCIM() + "/Camera/MyFolder" + index;
+        String path = generateDCIM() + "/Camera/" + mAlbumName;
         new java.io.File(path).mkdirs();
         return path;
     }
