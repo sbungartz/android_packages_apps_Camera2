@@ -26,7 +26,7 @@
     </array>
 
     <string-array name="pref_album_entryvalues" translatable="false">
-        <item>Camera</item>
+        <item></item>
         <item>Scanner</item>
 	<item>Mopf</item>
     </string-array>
@@ -44,15 +44,15 @@
     </string-array>
 
     <array name="album_icons" translatable="false">
-        <item>@drawable/ic_wb_incandescent</item>
-        <item>@drawable/ic_wb_fluorescent</item>
-        <item>@drawable/ic_wb_auto</item>
+        <item>@drawable/ic_exposure_p1</item>
+        <item>@drawable/ic_exposure_p2</item>
+        <item>@drawable/ic_exposure_p3</item>
     </array>
 
     <array name="album_largeicons" translatable="false">
-        <item>@drawable/ic_wb_incandescent</item>
-        <item>@drawable/ic_wb_fluorescent</item>
-        <item>@drawable/ic_wb_auto</item>
+        <item>@drawable/ic_exposure_p1</item>
+        <item>@drawable/ic_exposure_p2</item>
+        <item>@drawable/ic_exposure_p3</item>
     </array>
 
     <array name="album_indicators" translatable="false">

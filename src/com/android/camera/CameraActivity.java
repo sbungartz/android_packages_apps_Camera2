@@ -1363,7 +1363,7 @@ public class CameraActivity extends Activity
     protected boolean setStoragePath(SharedPreferences prefs) {
         String storagePath = prefs.getString(CameraSettings.KEY_STORAGE,
                 Environment.getExternalStorageDirectory().toString());
-        String albumName = prefs.getString(CameraSettings.KEY_CURRENT_ALBUM, "Camera");
+        String albumName = prefs.getString(CameraSettings.KEY_CURRENT_ALBUM, "");
         Log.v(TAG, "album name for storage path is: " + albumName);
         Storage.getInstance().setRoot(storagePath);
         Storage.getInstance().setAlbumName(albumName);

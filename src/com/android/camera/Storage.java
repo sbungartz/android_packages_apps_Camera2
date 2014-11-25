@@ -73,11 +73,7 @@ public class Storage {
     }
 
     public void setAlbumName(String name) {
-        if("Camera".equals(name)) {
-            mAlbumName = "";
-        } else {
-            mAlbumName = name;
-        }
+        mAlbumName = name;
     }
 
     public int writeFile(String path, byte[] jpeg, ExifInterface exif,
