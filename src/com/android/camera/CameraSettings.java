@@ -139,6 +139,8 @@ public class CameraSettings {
     public static final String KEY_SLOW_SHUTTER = "pref_camera_slow_shutter";
     public static final String KEY_ASD = "pref_camera_asd";
 
+    public static final String KEY_CURRENT_ALBUM = "pref_camera_current_album";
+
     public static final String EXPOSURE_DEFAULT_VALUE = "0";
     public static final String VALUE_ON = "on";
     public static final String VALUE_OFF = "off";
@@ -434,6 +436,8 @@ public class CameraSettings {
         ListPreference storage = group.findPreference(KEY_STORAGE);
         ListPreference superZoom = group.findPreference(KEY_SUPERZOOM);
         ListPreference videoHdr = group.findPreference(KEY_VIDEO_HDR);
+
+	ListPreference currentAlbum = group.findPreference(KEY_CURRENT_ALBUM);
 
         // Since the screen could be loaded from different resources, we need
         // to check if the preference is available here

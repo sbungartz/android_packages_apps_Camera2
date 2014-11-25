@@ -160,6 +160,14 @@ public class PhotoMenu extends PieController
             });
             mRenderer.addItem(item);
         }
+	
+	// album selection
+        if (group.findPreference(CameraSettings.KEY_CURRENT_ALBUM) != null) {
+            item = makeItem(CameraSettings.KEY_CURRENT_ALBUM);
+            item.setLabel("Tralala Album");
+            more.addItem(item);
+        }
+
         // location
         if (group.findPreference(CameraSettings.KEY_RECORD_LOCATION) != null) {
             item = makeSwitchItem(CameraSettings.KEY_RECORD_LOCATION, true);
