@@ -111,6 +111,9 @@ public class Storage {
             Location location, int orientation, ExifInterface exif, byte[] jpeg, int width,
             int height, String mimeType) {
 
+        int newIndex = dirIndex.incrementAndGet();
+        Log.v(TAG, "Incremented dirIndex to " + newIndex);
+
         String path = generateFilepath(title, mimeType);
         int size = writeFile(path, jpeg, exif, mimeType);
         return addImage(resolver, title, date, location, orientation,
@@ -151,6 +154,8 @@ public class Storage {
     public Uri addImage(ContentResolver resolver, String title,
             long date, Location location, int orientation, int jpegLength,
             String path, int width, int height, String mimeType) {
+        Log.v(TAG, "adding image at path: " + path);
+
         // Insert into MediaStore.
         ContentValues values =
                 getContentValuesForData(title, date, location, orientation, jpegLength, path,
@@ -165,6 +170,7 @@ public class Storage {
             Location location, int orientation, ExifInterface exif, byte[] jpeg, int width,
             int height, String mimeType) {
         String path = generateFilepath(title, mimeType);
+        Log.v(TAG, "generated image filepath: " + path);
         writeFile(path, jpeg, exif, mimeType);
         updateImage(imageUri, resolver, title, date, location, orientation, jpeg.length, path,
                 width, height, mimeType);
@@ -214,8 +220,13 @@ public class Storage {
         return new File(mRoot, Environment.DIRECTORY_DCIM).toString();
     }
 
+    private static final java.util.concurrent.atomic.AtomicInteger dirIndex = new java.util.concurrent.atomic.AtomicInteger();
     public String generateDirectory() {
-        return generateDCIM() + "/Camera";
+        int index = dirIndex.get();
+        Log.v(TAG, "Generate dir: " + index);
+        String path = generateDCIM() + "/Camera/MyFolder" + index;
+        new java.io.File(path).mkdirs();
+        return path;
     }
 
     public String generateRawDirectory() {
