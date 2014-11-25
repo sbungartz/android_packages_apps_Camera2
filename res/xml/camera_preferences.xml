@@ -285,7 +285,7 @@
             camera:entryValues="@array/pref_switch_entryvalues" />
     <IconListPreference
             camera:key="pref_camera_current_album"
-            camera:defaultValue="Camera"
+            camera:defaultValue=""
             camera:title="Album"
             camera:icons="@array/album_icons"
             camera:largeIcons="@array/album_largeicons"
