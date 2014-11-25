@@ -283,4 +283,13 @@
             camera:title="@string/pref_superzoom_title"
             camera:entries="@array/pref_switch_entries"
             camera:entryValues="@array/pref_switch_entryvalues" />
+    <IconListPreference
+            camera:key="pref_camera_current_album"
+            camera:defaultValue="Camera"
+            camera:title="Album"
+            camera:icons="@array/album_icons"
+            camera:largeIcons="@array/album_largeicons"
+            camera:entries="@array/pref_album_entries"
+            camera:entryValues="@array/pref_album_entryvalues"
+            camera:labelList="@array/pref_album_labels" />
 </PreferenceGroup>
