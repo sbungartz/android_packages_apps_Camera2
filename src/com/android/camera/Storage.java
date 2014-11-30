@@ -223,7 +223,11 @@ public class Storage {
     }
 
     public String generateDirectory() {
-        String path = generateDCIM() + "/Camera/" + mAlbumName;
+        String dirName = mAlbumName;
+        if(dirName.equals("")) {
+            dirName = "Camera";
+        }
+        String path = generateDCIM() + "/" + dirName;
         new java.io.File(path).mkdirs();
         return path;
     }
