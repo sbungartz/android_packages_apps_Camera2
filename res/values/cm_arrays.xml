@@ -26,40 +26,13 @@
     </array>
 
     <string-array name="pref_album_entryvalues" translatable="false">
-        <item></item>
-        <item>Scanner</item>
-	<item>Mopf</item>
+        <item>Camera</item>
     </string-array>
 
     <string-array name="pref_album_entries" translatable="false">
         <item>Camera</item>
-        <item>Scanner</item>
-	<item>Mopf</item>
     </string-array>
 
-    <string-array name="pref_album_labels" translatable="false">
-        <item>Camera</item>
-        <item>Scanner</item>
-	<item>Mopf</item>
-    </string-array>
-
-    <array name="album_icons" translatable="false">
-        <item>@drawable/ic_exposure_p1</item>
-        <item>@drawable/ic_exposure_p2</item>
-        <item>@drawable/ic_exposure_p3</item>
-    </array>
-
-    <array name="album_largeicons" translatable="false">
-        <item>@drawable/ic_exposure_p1</item>
-        <item>@drawable/ic_exposure_p2</item>
-        <item>@drawable/ic_exposure_p3</item>
-    </array>
-
-    <array name="album_indicators" translatable="false">
-        <item>@drawable/ic_indicator_wb_tungsten</item>
-        <item>@drawable/ic_indicator_wb_fluorescent</item>
-        <item>@drawable/ic_indicator_wb_off</item>
-    </array>
 
     <!-- Camera Preferences for burst modes -->
     <string-array name="pref_camera_burst_mode_entries" translatable="false">

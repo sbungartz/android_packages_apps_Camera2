@@ -18,6 +18,8 @@ package com.android.camera;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
+import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.content.ContentResolver;
@@ -230,6 +232,16 @@ public class Storage {
         String path = generateDCIM() + "/" + dirName;
         new java.io.File(path).mkdirs();
         return path;
+    }
+
+    public List<String> getAvailableAlbumNames() {
+        List<String> albumNames = new ArrayList<String>();
+        for(String dirName : new File(generateDCIM()).list()) {
+            if(!dirName.equals("100ANDRO") && !dirName.equals(".thumbnails")) {
+                albumNames.add(dirName);
+            }
+        }
+        return albumNames;
     }
 
     public String generateRawDirectory() {

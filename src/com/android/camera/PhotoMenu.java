@@ -161,13 +161,6 @@ public class PhotoMenu extends PieController
             mRenderer.addItem(item);
         }
 	
-	// album selection
-        if (group.findPreference(CameraSettings.KEY_CURRENT_ALBUM) != null) {
-            item = makeItem(CameraSettings.KEY_CURRENT_ALBUM);
-            item.setLabel("Tralala Album");
-            more.addItem(item);
-        }
-
         // location
         if (group.findPreference(CameraSettings.KEY_RECORD_LOCATION) != null) {
             item = makeSwitchItem(CameraSettings.KEY_RECORD_LOCATION, true);
@@ -230,6 +223,7 @@ public class PhotoMenu extends PieController
         // extra settings popup
         mSettingsKeys = new String[] {
                 CameraSettings.KEY_STORAGE,
+                CameraSettings.KEY_CURRENT_ALBUM,
                 CameraSettings.KEY_POWER_SHUTTER,
                 CameraSettings.KEY_MAX_BRIGHTNESS,
                 CameraSettings.KEY_FOCUS_MODE,

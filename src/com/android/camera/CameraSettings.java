@@ -439,6 +439,16 @@ public class CameraSettings {
 
 	ListPreference currentAlbum = group.findPreference(KEY_CURRENT_ALBUM);
 
+        if (currentAlbum != null) {
+            List<String> albumNamesList = com.android.camera.Storage.getInstance().getAvailableAlbumNames();
+            String albumNames[] = new String[albumNamesList.size()];
+            albumNamesList.toArray(albumNames);
+
+            currentAlbum.setEntries(albumNames);
+            currentAlbum.setEntryValues(albumNames);
+            currentAlbum.setLabels(albumNames);
+        }
+
         // Since the screen could be loaded from different resources, we need
         // to check if the preference is available here
         if (videoQuality != null) {
